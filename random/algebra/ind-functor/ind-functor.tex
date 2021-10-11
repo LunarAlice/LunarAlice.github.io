@@ -1,0 +1,101 @@
+\documentclass{jsarticle}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{1}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage[dvipdfmx]{xcolor}
+\usepackage{amsmath,amssymb,amsthm,epic,eepic,multicol,amscd,enumerate,framed,tikz,graphicx}
+\usepackage{bm}
+\usepackage{lipsum}
+\usepackage{wrapfig}
+\usepackage[version=3]{mhchem}
+\usetikzlibrary{cd}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+\hypersetup{% hyperrefオプションリスト
+setpagesize=false,
+ bookmarksnumbered=true,%
+ bookmarksopen=true,%
+ colorlinks=true,%
+ linkcolor=blue,
+ citecolor=red,
+}
+\setlength{\evensidemargin}{\oddsidemargin}
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\newtheorem{bigthm}{大定理}
+\newtheorem{thm}{定理}[section]
+\newtheorem{prop}[thm]{命題}
+\newtheorem{lem}[thm]{補題}
+\newtheorem{fact}[thm]{事実}
+\newtheorem{cor}[thm]{系}
+\newtheorem{situ}[thm]{状況}
+\newtheorem{defn}[thm]{定義}
+\newtheorem{prob}{問題}
+\newtheorem{ob}[thm]{観察}
+\newtheorem{note}[thm]{注意}
+\newtheorem{ex}[thm]{例}
+\newtheorem*{axiom}{公理}
+\newtheorem{opi}{私見}
+\newcommand{\lt}{%
+  <
+}
+\newcommand{\ind}[3]{%
+  \mathrm{Ind}^{#1}_{#2}({#3})
+}
+\newcommand{\homc}[2]{%
+  \mathrm{Hom}({#1}, {#2})
+}
+\makeatother
+\usepackage{comment}
+\usepackage[all]{xy}
+\title{Ind functor}
+\author{馬杉和貴}
+\date{\today}
+\begin{document}
+\maketitle
+
+\section{$\mathrm{Ind}$-関手}
+\subsection{定義}
+有限群 $H \subset G$ について関手 $\ind{G}{H}{-}$ とは関手 $-\otimes_{\mathbb{Z}[H]}\mathbb{Z}[G]$ のことをいう. $\mathrm{Ind}$ 関手が忘却関手 $\mathbb{Z}[G]-\mathrm{mod} \to \mathbb{Z}[H]-\mathrm{mod}$ の右随伴であることを示す. ここで左随伴であることは環論の一般論により知られている.
+
+\subsection{アイデア}
+曖昧なアイデアを記述する. $\ind{G}{H}{N} = N \otimes_{\mathbb{Z}[H]} \mathbb{Z}[G]$ について 「$H$-成分の座標」を抜き出す操作を考えればこれは $M$ から $N$ への $H-\mathrm{mod}$ 射を導く. 逆に, 「座標を思い出す」ような操作を施すと逆対応が得られる.
+
+\subsection{対応}
+$f \colon M \to \ind{G}{H}{N} = N \otimes_{\mathbb{Z}[H]} \mathbb{Z}[G]$ が与えられたとする. このとき, $H/G$ の代表系 $\{\sigma_\bullet\}$ を任意に取る. すると, $f(m)$ についてこれを $\Sigma_\bullet n(m; \bullet) \otimes \sigma_\bullet$ と表示できる. ここで $\sigma_i \in H$ としたときに $n(m; i) \sigma_i \in N$ は代表系によらずに決まる. 実際, 並び替えを無視すれば一般の代表系は $h_\bullet\sigma_\bullet$ と表示できることを思い出せば明らか. こうして作った射が $\mathbb{Z}[H]$-作用と compatible であることは明らか.
+
+\subsection{逆対応}
+$h\colon M\to N$ について $f(m) = \Sigma_\bullet h(m\sigma_\bullet^{-1}) \otimes \sigma_\bullet$ とおけばこれも代表系の取り方によらない. またこれは $G$-action と compatible. 実際, 右からの掛け算により左代表系は代表系性を保つため, $f(mg) = \Sigma_\bullet h(mg\sigma_\bullet^{-1}) \otimes (\sigma_\bullet g^{-1})g = f(m)g$ が成り立つ.
+
+\subsection{自然性}
+ここで作った対応 $t \colon \homc{M}{\ind{G}{H}{N}} \to \homc{M}{N}$ が自然であることについて確かめる. $i \colon M' \to M$ と $j \colon N \to N'$ について対応が compatible であることを確かめる. $t(f)$ に $i$ と $j$ を作用させたものを $t'$ とおくと, $t'(m') = j(t(f)(i(m')))$ となる. $f(i(m')) = \Sigma_\bullet n(i(m'); \bullet) \otimes \sigma_\bullet$ とすると $t(f)(i(m')) = n(i(m'); i) \sigma_i$ と記述できる. より $t'(m') = j(n(i(m'); i) \sigma_i)$ と計算できる. ここで $f$ に $i$ と $j$ を作用させたものを $f'$ とおくと, $f'(m') = \Sigma_\bullet j(n(i(m'); \bullet)) \otimes \sigma_\bullet$ より, $t(f')(m') = j(n(i(m'); i)) \sigma_i$ と表せる. $j$ は $H$-action と compatible より $t' = t(f')$ が成り立つ.
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
